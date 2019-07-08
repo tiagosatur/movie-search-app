@@ -11,7 +11,7 @@ export const initialState = {
     error: null
 }
 
-export default ( state = initialState, action ) => {
+export const user = ( state = initialState, action ) => {
     const { type, user, error } = action;
 
     switch(type) {

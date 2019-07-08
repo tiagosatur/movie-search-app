@@ -12,7 +12,7 @@ export const initialState = {
     error: null
 }
 
-export default ( state = initialState, action ) => {
+export const movie = ( state = initialState, action ) => {
     const { type, movie, error } = action;
 
     switch(type) {

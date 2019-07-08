@@ -11,7 +11,7 @@ export const InputBaseStyled = css`
     height: ${rem(32)};
     justify-content: flex-start;
     line-height: $control-line-height;
-    padding: ${rem(8)};
+    padding: ${rem(16)};
     transition: all .4s;
     width: 100%;
 `;

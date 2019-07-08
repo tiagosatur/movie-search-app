@@ -6,20 +6,20 @@ import {
 } from '../../utils/actionTypes';
 
 
-function searchMoviePending() {
+export function searchMoviePending() {
     return {
         type: SEARCH_MOVIE_PENDING
     }
 }
 
-export function searchMovieSuccess(movie) {    
+export function searchMovieSuccess(movie) {
     return {
         type: SEARCH_MOVIE_SUCCESS,
         movie
     }
 }
 
-function searchMovieError(error) {
+export function searchMovieError(error) {
     return {
         type: SEARCH_MOVIE_ERROR,
         error: error

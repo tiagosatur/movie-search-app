@@ -10,7 +10,7 @@ export const initialState = {
     error: null
 }
 
-export default ( state = initialState, action ) => {
+export const details = ( state = initialState, action ) => {
     const { type, details, error } = action;
 
     switch(type) {

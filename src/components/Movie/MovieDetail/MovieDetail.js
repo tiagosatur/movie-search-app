@@ -25,8 +25,6 @@ const MovieDetail = props => {
         },
     } = useSelector(state => state);
 
-    console.log('moviedetails', movieDetails);
-
     if(pending) return <LoadingSpinner />
     
     if(error) return <div>

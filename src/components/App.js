@@ -27,6 +27,7 @@ const App = () => {
     )
 }
 const Grid = styled.div`
+    height: 100%;
     padding: ${rem(16)};
     @media(min-width: ${rem(768)}) {
         padding: 0;

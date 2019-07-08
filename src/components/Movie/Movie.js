@@ -111,8 +111,13 @@ const StyledMovieItem = styled.div`
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
-  margin: ${rem(100)} auto 0 auto;
-  width: 50%;
+  margin: ${rem(20)} auto 0 auto;
+  width: 100%;
+
+  @media(min-width: ${rem(768)}) {
+    margin: ${rem(100)} auto 0 auto;
+    width: 50%;
+  }
 
   .input {
     flex-grow: 1;
