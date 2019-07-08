@@ -9,7 +9,11 @@ const Login = (props) => {
     
     function handleLogin() {
         setRedirect(true);
+
+        
     };
+
+    console.log('clicou',redirect);
     
     let { from } = state || { from: { pathname: "/" } };
     

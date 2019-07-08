@@ -23,6 +23,11 @@ const colorPallete = {
     18: '#2d2d2d',
     13: '#212121',
   },
+  red: {
+    1: '#f72222',
+  },
+  primary: '#764ba2',
+  primaryGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
 };
 
 export default colorPallete;

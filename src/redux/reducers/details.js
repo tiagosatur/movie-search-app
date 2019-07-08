@@ -1,43 +1,40 @@
 import { 
-    SEARCH_MOVIE_PENDING,
-    SEARCH_MOVIE_SUCCESS,
-    SEARCH_MOVIE_ERROR,
+    MOVIE_DETAILS_PENDING,
+    MOVIE_DETAILS_SUCCESS,
+    MOVIE_DETAILS_ERROR,
 } from '../../utils/actionTypes';
 
 export const initialState = {
     pending: false,
-    movie: [],
-    totalResults: 0,
+    details: {},
     error: null
 }
 
 export default ( state = initialState, action ) => {
-    const { type, movie, error } = action;
+    const { type, details, error } = action;
 
     switch(type) {
-        case SEARCH_MOVIE_PENDING:
+        case MOVIE_DETAILS_PENDING:
             return {
                 ...state,
-                movie: [],
-                totalResults: 0,
+                details: {},
                 pending: true
             };
-        case SEARCH_MOVIE_SUCCESS:
+        case MOVIE_DETAILS_SUCCESS:
             return {
                 ...state,
                 pending: false,
-                movie: movie.Search,
-                totalResults: movie.totalResults,
+                details: details,
             };
-        case SEARCH_MOVIE_ERROR:
+        case MOVIE_DETAILS_ERROR:
             return {
                 ...state,
-                movie: [],
+                details: {},
                 pending: false,
-                totalResults: 0,
                 error: error
             };
         default: 
             return state;
     }
+    
 };

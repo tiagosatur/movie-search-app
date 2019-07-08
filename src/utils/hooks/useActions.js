@@ -5,7 +5,8 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   searchMovie,
-} from '../../redux/actions/movies';
+  movieDetails,
+} from '../../redux/actions';
 
 const useActions = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,14 @@ const useActions = () => {
     data => dispatch(searchMovie(data)),
     [dispatch],
   );
+
+  const movieDetailsAction = useCallback(
+    data => dispatch(movieDetails(data)), [dispatch],
+  );
+
   return {
     searchMovieAction,
+    movieDetailsAction,
   };
 };
 

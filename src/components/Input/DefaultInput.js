@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { colorPallete } from '../../style';
-import rem from '../../style/mixins/rem';
+import styled, { css } from 'styled-components';
+import { colorPallete, rem } from '../../style';
 
 const DefaultInput = props => {
   const {
@@ -12,41 +11,52 @@ const DefaultInput = props => {
     value,
     disabled,
     type,
-    register,
-    errors,
     handleKeyUp,
     handleChange,
     submit,
   } = props;
 
-  console.log('props', props);
-
   return (
-    <div className="control">
-      <StyledDefaultInput
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        className={`input ${classes ? classes : ''}`}
-        placeholder={placeholder}
-        disabled={disabled}
-        onKeyUp={handleKeyUp}
-        onChange={handleChange}
-        onSubmit={submit}
-      />
-    </div>
+    <StyledDefaultInput
+      type={type}
+      id={id}
+      name={name}
+      value={value}
+      className={`input ${classes ? classes : ''}`}
+      placeholder={placeholder}
+      disabled={disabled}
+      onKeyUp={handleKeyUp}
+      onChange={handleChange}
+      onSubmit={submit}
+    />
+
   );
 };
 
+const inputBaseStyle = css`
+    align-items: center;
+    border: ${rem(1)} solid ${colorPallete.light['80']};
+    border-radius: ${rem(2)};
+    box-shadow: none;
+    display: inline-flex;
+    font-size: ${rem(16)};
+    height: ${rem(32)};
+    justify-content: flex-start;
+    line-height: $control-line-height;
+    padding: ${rem(8)};
+`;
+
 const StyledDefaultInput = styled.input`
-  border-left-color: ${({ errors, name }) => {
+    ${inputBaseStyle}
+
+    border-left-color: ${({ errors, name }) => {
     return errors && errors[name]
       ? 'red'
-      : colorPallete.light['87'];
+      : colorPallete.light['80'];
   }};
   border-left-width: ${({ errors, name }) =>
     errors && errors[name] ? rem(5) : rem(1)};
+
   &:hover,
   &:focus {
     border-color: ${({ errors, name }) => {
@@ -57,17 +67,6 @@ const StyledDefaultInput = styled.input`
     border-left-width: ${({ errors, name }) =>
       errors && errors[name] ? rem(5) : rem(1)};
   }
-`;
-
-const StyledSpan = styled.span`
-  color: red;
-  }};
-  display: ${({ errors, name }) => {
-    return errors[name] && errors[name].message ? 'flex' : 'none';
-  }};
-  font-size: ${rem(14)};
-  padding: ${rem(4)} ${rem(8)} 0 ${rem(8)};
-  transition: all 0.5s;
 `;
 
 export default DefaultInput;

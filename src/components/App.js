@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { PATHS } from '../utils/variables';
 import { Movie } from './Movie';
-import MainNav from './MainNav'
+import { MainNav } from './MainNav'
 import { PrivateRoute} from './PrivateRoute';
 import { Login } from './Login';
 import { GlobalStyle } from '../style/base/global';
@@ -15,7 +15,7 @@ const App = () => {
             <Switch>
                 <Route path={PATHS.LOGIN.PATH} component={Login} />
                 <Route exact path={PATHS.HOME.PATH} component={Home} />
-                <Route path={PATHS.MOVIE.PATH}      component={Movie} />
+                <Route path={PATHS.MOVIE.PATH} component={Movie} />
                 <PrivateRoute component={Dashboard} /> 
             </Switch>
         </div>
