@@ -18,9 +18,9 @@ const MovieSummary = props => {
             <StyledPosterWrapper>
                 {Poster !== 'N/A' 
                     ? <StyledSmallImage src={Poster} alt={Title} /> 
-                    : <div>
+                    : <SVGWrapper>
                         <FontAwesomeIcon icon={faFileImage} style={{fontSize: '100px'}} />
-                    </div>
+                    </SVGWrapper>
                 }
             </StyledPosterWrapper>
             <div>
@@ -66,8 +66,9 @@ const StyledSmallImage = styled.img`
 `;
 
 const StyledTitle = styled.h2`
+    color: ${colorPallete.light[13]};
     font-size: ${rem(16)};
-    font-weight: 600;
+    font-weight: 200;
     padding: ${rem(16)} ${rem(8)};
 `;
 
@@ -75,5 +76,14 @@ const textBase = css`
   font-size: 14px;
   text-decoration: none;
 `;
+
+const SVGWrapper = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: ${rem(16)};
+`;
+
+
 
 export default MovieSummary;

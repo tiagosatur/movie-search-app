@@ -7,6 +7,7 @@ import { faFileImage } from '@fortawesome/free-regular-svg-icons'
 
 import useActions from '../../../utils/hooks/useActions';
 import { LoadingSpinner } from '../../LoadingSpinner'
+import { colorPallete, rem } from '../../../style'
 
 const MovieDetail = props => {
     const { match: { params: { imdbID }} } = props;
@@ -68,10 +69,10 @@ const MovieDetail = props => {
                 <StyledPosterWrapper>
                     {Poster !== 'N/A' 
                         ? <img src={Poster} alt={Title} /> 
-                        : <div>
+                        : <SVGWrapper>
                             <FontAwesomeIcon icon={faFileImage} style={{fontSize: '100px'}} />
                             <span>Image unnavailable :(</span> 
-                        </div>
+                        </SVGWrapper>
                     }
                 </StyledPosterWrapper>
                 <StyledContent>
@@ -122,7 +123,26 @@ const StyledContent = styled.div`
 `;
 
 const MovieTitle = styled.h2`
+  
+    background: ${colorPallete.primaryGradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-top: 0;
 `;
+
+const SVGWrapper = styled.div`
+    align-items: center;
+    color: ${colorPallete.light[67]};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: ${rem(16)};
+
+    svg {
+        color: ${colorPallete.light[87]};
+        margin-bottom: ${rem(24)};
+    }
+`;
+
 
 export default MovieDetail;

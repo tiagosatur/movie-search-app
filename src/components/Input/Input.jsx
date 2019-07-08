@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { colorPallete } from '../../style';
 import rem from '../../style/mixins/rem';
+import { InputBaseStyled } from './InputBaseStyled'
 
 const Input = props => {
   const {
@@ -14,13 +15,13 @@ const Input = props => {
     register,
     errors,
     handleKeyUp,
-    submit,
   } = props;
+  
 
   return (
-    <div className="control">
+    <Field>
       <StyledInput
-        type={type}
+        type={type ? type : 'text'}
         id={id && id}
         name={name}
         ref={register}
@@ -29,18 +30,23 @@ const Input = props => {
         placeholder={placeholder}
         disabled={disabled}
         onKeyUp={handleKeyUp}
-        onSubmit={submit}
       />
       {errors[name] ? (
         <StyledSpan errors={errors} name={name}>
           {errors[name] && errors[name].message}
         </StyledSpan>
       ) : null}
-    </div>
+    </Field>
   );
 };
 
+const Field = styled.div`
+    margin-bottom: ${rem(16)};
+`;
+
 const StyledInput = styled.input`
+  ${ InputBaseStyled }
+
   border-left-color: ${({ errors, name }) => {
     return errors && errors[name]
       ? 'red'
@@ -48,6 +54,7 @@ const StyledInput = styled.input`
   }};
   border-left-width: ${({ errors, name }) =>
     errors && errors[name] ? rem(5) : rem(1)};
+
   &:hover,
   &:focus {
     border-color: ${({ errors, name }) => {
@@ -62,7 +69,6 @@ const StyledInput = styled.input`
 
 const StyledSpan = styled.span`
   color: red;
-  }};
   display: ${({ errors, name }) => {
     return errors[name] && errors[name].message ? 'flex' : 'none';
   }};

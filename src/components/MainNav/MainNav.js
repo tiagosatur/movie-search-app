@@ -50,6 +50,7 @@ const StyledNavList = styled.ul`
             color: ${ colorPallete.white };
             font-size: ${rem(16)};
             font-weight: 200;
+            outline: none;
             padding: ${rem(8)} ${rem(10)};
             position: relative;
 
@@ -65,7 +66,8 @@ const StyledNavList = styled.ul`
 
             }
 
-            &:hover {
+            &:hover, &:focus {
+                
                 &:after {
                     width: 95%;
                 }

@@ -4,19 +4,15 @@ export const PATHS = {
         PATH: '/',
     },
     MOVIE: {
-        LABEL: 'Movie',
-        PATH: '/movie',
-    },
-    FORM: {
-        LABEL: 'Form',
-        PATH: '/form',
-    },
-    LOGIN: {
-        LABEL: 'Login',
-        PATH: '/login',
+        LABEL: 'Movies',
+        PATH: '/movies',
     },
     DASHBOARD: {
         LABEL: 'Dashboard',
         PATH: '/dashboard',
+    },
+    LOGIN: {
+        LABEL: 'Login',
+        PATH: '/login',
     } 
 }

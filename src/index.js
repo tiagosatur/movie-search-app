@@ -8,14 +8,24 @@ import App from './components/App'
 import reducers from './redux/reducers'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+let store;
 
-const store = createStore(
-    reducers,
-    compose(
+if (window.navigator.userAgent.includes('Chrome')) {
+    store = createStore(
+      reducers,
+      compose(
         applyMiddleware(thunk),
-        composeEnhancer,
-    )
-)
+        composeEnhancer
+      )
+    );
+  } else {
+    store = createStore(
+      reducers,
+      compose(
+        applyMiddleware(thunk)
+      )
+    );
+  }
 
 ReactDOM.render(
     <Provider store={store}>

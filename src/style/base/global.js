@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
         height: 100%;
     }
 
+    *, *:after, *:before {
+        box-sizing: border-box;
+    }
+
     body {
         /* background-image: linear-gradient(110deg, #f93d66, #6d47d9); */
         background-repeat: no-repeat;

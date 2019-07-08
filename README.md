@@ -1,3 +1,5 @@
+## About
+
 Hey fellows!
 
 This project aims to search movies and see its details.

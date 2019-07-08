@@ -26,8 +26,12 @@ const StyledIcon = styled(FontAwesomeIcon)`
     cursor: pointer;
     font-size: ${rem(40)};
     position: absolute;
-    top: ${rem(-50)};
+    top: 0;
     right: ${rem(-50)};
+
+    &:hover {
+       color: ${colorPallete.primary};
+    }
 `;
 
 const ModalWrapper = styled.div`

@@ -2,9 +2,7 @@ import {
     SEARCH_MOVIE_PENDING,
     SEARCH_MOVIE_SUCCESS,
     SEARCH_MOVIE_ERROR,
-    MOVIE_DETAILS_PENDING,
-    MOVIE_DETAILS_SUCCESS,
-    MOVIE_DETAILS_ERROR,
+    SEARCH_MOVIE_CLEAR,
 } from '../../utils/actionTypes';
 
 
@@ -29,25 +27,12 @@ function searchMovieError(error) {
 }
 
 
-function movieDetailsPending() {
+export function searchMovieClear(error) {
     return {
-        type: MOVIE_DETAILS_PENDING
+        type: SEARCH_MOVIE_CLEAR,
     }
 }
 
-export function movieDetailsSuccess(movie) {    
-    return {
-        type: MOVIE_DETAILS_SUCCESS,
-        movie
-    }
-}
-
-function movieDetailsError(error) {
-    return {
-        type: MOVIE_DETAILS_ERROR,
-        error: error
-    }
-}
 
 export const searchMovie = (query) => (dispatch) => {
     dispatch(searchMoviePending());
@@ -60,8 +45,6 @@ export const searchMovie = (query) => (dispatch) => {
         if(res.Response == 'False') {
             throw(res.Error)
         }
-        //console.log('result', JSON.stringify(res));
-        //dispatch(searchMovieSuccess(res.Search))
         dispatch(searchMovieSuccess(res))
 
     })

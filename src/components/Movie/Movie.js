@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import useActions from '../../utils/hooks/useActions';
 import { LoadingSpinner } from '../LoadingSpinner'
 import { DefaultInput } from '../Input'
+import { Error } from '../Error'
 import useFormInput from '../../utils/hooks/useFormInput';
 import { MovieDetail } from './MovieDetail'
 import { MovieSummary } from './MovieSummary'
@@ -42,6 +43,9 @@ const Movie = ({ match }) => {
     const toggleModal = () => {
       setShowModal(!showModal);
     }
+    /* if(error) {
+      searchMovieClearAction();
+    } */
 
     return (
         <>
@@ -59,18 +63,12 @@ const Movie = ({ match }) => {
 
             { pending && <LoadingSpinner medium />}
 
-            { error && (
-                  <div>
-                    <p>Oops...</p>
-                    <h3>{error}</h3>
-                  </div>
-                )
-            }
+            { error && <Error message={error} /> }
 
             { movie && movie.length > 0 && !pending && !error && (
               <p>
                 We found <strong>{ totalResults }</strong>
-                {totalResults == 1 ? ' result' : ' results'}
+                {totalResults == 1 ? 'result!' : ' results!'}
               </p>
             )}
 
@@ -80,8 +78,8 @@ const Movie = ({ match }) => {
                   const { Title, Poster, Plot, imdbID } = m
 
                   return(
-                    <StyledMovieItem>
-                      <Link to={`${match.url}/${imdbID}`} key={imdbID+1} onClick={setShowModal}>
+                    <StyledMovieItem key={Math.floor(Math.random())}>
+                      <Link to={`${match.url}/${imdbID}`} key={Math.floor(Math.random())} onClick={setShowModal}>
                         <MovieSummary data={{Title, Poster, Plot}} />
                       </Link>
                       <Modal handleClose={toggleModal} show={showModal}>
