@@ -13,7 +13,7 @@ const Button = ({
   ...styledProps
 }) => {
 
-  const defineType = (!type || type == '') ? 'submit': type;
+  const defineType = (!type || type === '') ? 'submit': type;
   
   return (
     <StyledButton

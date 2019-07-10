@@ -2,6 +2,7 @@
   "name": "movie-search-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tiagosatur.github.io/movie-search-app",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
@@ -21,6 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

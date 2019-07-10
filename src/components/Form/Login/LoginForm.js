@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import useForm from 'react-hook-form'
-import { colorPallete, rem } from '../../../style';
+import { rem } from '../../../style';
 
-import { Input } from '../../Input';
-import { Button } from '../../Button';
+import { Button, Input } from '../..';
 
-const Form = props => {
+const LoginForm = props => {
     const { onSubmit } = props
     const { register, handleSubmit, errors } = useForm();
     
@@ -40,10 +39,9 @@ const StyledForm = styled.form`
    flex-direction: column;
    width: 80%;
    margin: 0 auto;
-
    @media(min-width: ${rem(768)}) {
       width: 30%;
    }
 `;
 
-export default Form;
+export default LoginForm;

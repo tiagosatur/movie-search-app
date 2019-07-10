@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { colorPallete, rem } from '../../style';
 
 const Modal = (props) => {
     const {
-        handleClose, show, children 
+        handleClose, children 
     } = props;
   
     return (
@@ -23,15 +23,13 @@ const Modal = (props) => {
 
 const StyledIcon = styled(FontAwesomeIcon)`
     color: ${colorPallete.white};
+    border: ${rem(1)} solid ${colorPallete.primary};
+    border-radius: ${rem(3)};
     cursor: pointer;
     font-size: ${rem(40)};
     position: absolute;
     top: 0;
     right: ${rem(-50)};
-
-    &:hover {
-       color: ${colorPallete.primary};
-    }
 `;
 
 const ModalWrapper = styled.div`

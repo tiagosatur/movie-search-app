@@ -1,14 +1,9 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { PATHS } from '../utils/variables';
-import { Movie } from './Movie';
-import { MainNav } from './MainNav'
-import { PrivateRoute} from './PrivateRoute';
-import { Login } from './Login';
-import { Dashboard } from './Dashboard';
+import { MainNav, PrivateRoute, Grid } from '.'
+import { Home, Movie, Dashboard, Login } from '../pages';
 import { GlobalStyle } from '../style/base/global';
-import styled, { css } from 'styled-components';
-import { colorPallete, rem } from '../style'
 
 const App = () => {
     return(
@@ -26,21 +21,6 @@ const App = () => {
         </div>
     )
 }
-const Grid = styled.div`
-    height: 100%;
-    padding: ${rem(16)};
-    @media(min-width: ${rem(768)}) {
-        padding: 0;
-        width: 80%;
-        margin: 0 auto;
-    }
-`;
 
-export const Home = () => (
-    <div>
-        <h2>Home</h2>
-        <p>Wecome to the application main page</p>
-    </div>
-);
 
 export default App;

@@ -4,15 +4,14 @@ import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
 import useActions from '../../utils/hooks/useActions';
-import { LoadingSpinner } from '../LoadingSpinner'
-import { DefaultInput } from '../Input'
-import { Error } from '../Error'
+import { 
+  Button, DefaultInput, Modal, Error, LoadingSpinner 
+} from '../../components'
 import useFormInput from '../../utils/hooks/useFormInput';
 import { MovieDetail } from './MovieDetail'
 import { MovieSummary } from './MovieSummary'
-import { Button } from '../Button';
-import { Modal } from '../Modal';
 import { rem } from '../../style';
+import uniqueId from '../../utils/uniqueId'
 
 const Movie = ({ match }) => {
     const [ showModal, setShowModal ] = useState(false);
@@ -43,9 +42,6 @@ const Movie = ({ match }) => {
     const toggleModal = () => {
       setShowModal(!showModal);
     }
-    /* if(error) {
-      searchMovieClearAction();
-    } */
 
     return (
         <>
@@ -78,21 +74,22 @@ const Movie = ({ match }) => {
                   const { Title, Poster, Plot, imdbID } = m
 
                   return(
-                    <StyledMovieItem key={Math.floor(Math.random())}>
-                      <Link to={`${match.url}/${imdbID}`} key={Math.floor(Math.random())} onClick={setShowModal}>
+                    <StyledMovieItem key={uniqueId()}>
+                      <Link to={`${match.url}/${imdbID}`} onClick={setShowModal}>
                         <MovieSummary data={{Title, Poster, Plot}} />
                       </Link>
-                      <Modal handleClose={toggleModal} show={showModal}>
+                      
+                    </StyledMovieItem>
+                  )
+                })
+              }
+              <Modal handleClose={toggleModal} show={showModal}>
                         <Route
                           exact
                           path={`${ match.path }/:imdbID`}
                           render={(props) => <MovieDetail data={movie} {...props} /> }
                         />
                       </Modal>
-                    </StyledMovieItem>
-                  )
-                })
-              }
             </StyledMovies>
         </>
     )
