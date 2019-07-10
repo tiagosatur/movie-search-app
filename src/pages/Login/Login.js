@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { colorPallete, rem } from '../../style';
+import { rem } from '../../style';
 import { useActions } from '../../utils/hooks';
-import Form from './Form/Form'
+import { LoginForm } from '../../components/Form'
+import { LoadingSpinner } from '../../components';
 
 
 const Login = (props) => {
@@ -36,6 +37,9 @@ const Login = (props) => {
     
     if(redirect) return <Redirect to={from} />
 
+    if(error) return <h3>Bad crendentials</h3>
+
+    if(pending) return <LoadingSpinner />
 
     return (
         <>
@@ -43,7 +47,7 @@ const Login = (props) => {
                 Você deve logar para ver a página 
                 <strong> { from.pathname } </strong>
                 </StyledLoginMessage>
-            <Form onSubmit={onSubmit} />
+            <LoginForm onSubmit={onSubmit} />
         </>
     );
 }

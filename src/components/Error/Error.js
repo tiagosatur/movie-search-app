@@ -1,14 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import useActions from '../../utils/hooks/useActions';
-import { colorPallete, rem } from '../../style';
+import styled from 'styled-components';
+import { colorPallete } from '../../style';
 
 const Error = props => {
   const {
     message
   } = props;
-  
-
 
   return (
     <>

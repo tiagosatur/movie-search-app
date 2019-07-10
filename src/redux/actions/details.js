@@ -32,7 +32,7 @@ export const movieDetails = (id) => (dispatch) => {
     fetch(movieSearchURL+id)
     .then((res) => res.json())
     .then(res => {
-        if(res.Response == 'False') {
+        if(res.Response === 'False') {
             throw(res.Error)
         }
         // setTimeout(() => {dispatch(movieDetailsSuccess(res))}, 2000)

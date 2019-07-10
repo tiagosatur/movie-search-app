@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileImage } from '@fortawesome/free-regular-svg-icons'
 
 import useActions from '../../../utils/hooks/useActions';
-import { LoadingSpinner } from '../../LoadingSpinner'
+import { LoadingSpinner } from '../../../components'
 import { colorPallete, rem } from '../../../style'
 
 const MovieDetail = props => {
@@ -60,7 +60,6 @@ const MovieDetail = props => {
             imdbRating,
             imdbVotes,
         } = movieDetails
-        console.log('Ratings', Ratings);
 
         return( 
             <StyledMovieDetailsWrapper>
@@ -77,22 +76,31 @@ const MovieDetail = props => {
                     <MovieTitle>{Title}</MovieTitle>
 
                     <table>
-                    <tr><th>IMDB ID</th>     <td>{imdbID}</td> </tr>
-                        <tr><th>Actors</th>      <td>{Actors}</td> </tr>
-                        <tr><th>Awards</th>      <td>{Awards}</td> </tr>
-                        <tr><th>Director</th>      <td>{Director}</td> </tr>
-                        <tr><th>Language</th>    <td>{Language}</td></tr>
-                        <tr><th>Plot</th>        <td>{Plot}</td></tr>
-                        <tr><th>Production</th>  <td>{Production}</td></tr>
-                        <tr><th>Rated</th>       <td>{Rated}</td></tr>
-                        <tr><th>Ratings</th>     <td>{Ratings.map(Rating => {return <div>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
-                        <tr><th>Released</th>    <td>{Released}</td></tr>
-                        <tr><th>Response</th>    <td>{Response}</td></tr>
-                        <tr><th>Writer</th>      <td>{Writer}</td></tr>
-                        <tr><th>Year</th>        <td>{Year}</td></tr>
-                        <tr><th>Website</th>     <td><a href={Website}>{Website}</a></td></tr>
-                        <tr><th>imdbRating</th>  <td>{imdbRating}</td></tr>
-                        <tr><th>imdbVotes</th>  <td>{imdbVotes}</td></tr>
+                        <tbody>
+                            <tr><th>IMDB ID</th><td>{imdbID}</td> </tr>
+                            <tr><th>Actors</th><td>{Actors}</td> </tr>
+                            <tr><th>Awards</th><td>{Awards}</td> </tr>
+                            <tr><th>BoxOffice</th><td>{BoxOffice}</td> </tr>
+                            <tr><th>Country</th> <td>{Country}</td> </tr>
+                            <tr><th>DVD</th> <td>{DVD}</td> </tr>
+                            <tr><th>Director</th> <td>{Director}</td> </tr>
+                            <tr><th>Genre</th> <td>{Genre}</td> </tr>
+                            <tr><th>Language</th><td>{Language}</td></tr>
+                            <tr><th>Metascore</th><td>{Metascore}</td></tr>
+                            <tr><th>Plot</th><td>{Plot}</td></tr>
+                            <tr><th>Production</th>  <td>{Production}</td></tr>
+                            <tr><th>Rated</th><td>{Rated}</td></tr>
+                            <tr><th>Ratings</th><td>{Ratings.map(Rating => {return <div>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
+                            <tr><th>Released</th><td>{Released}</td></tr>
+                            <tr><th>Response</th><td>{Response}</td></tr>
+                            <tr><th>Runtime</th><td>{Runtime}</td></tr>
+                            <tr><th>Writer</th><td>{Writer}</td></tr>
+                            <tr><th>Year</th><td>{Year}</td></tr>
+                            <tr><th>Type</th><td>{Type}</td></tr>
+                            <tr><th>Website</th><td><a href={Website}>{Website}</a></td></tr>
+                            <tr><th>imdbRating</th><td>{imdbRating}</td></tr>
+                            <tr><th>imdbVotes</th><td>{imdbVotes}</td></tr> 
+                        </tbody>
                     </table>
                     
                 </StyledContent>

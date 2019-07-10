@@ -3,7 +3,6 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
 } from '../../utils/actionTypes';
-import { reject } from 'q';
 
 function loginUserPending() {
     return {

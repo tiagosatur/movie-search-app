@@ -7,7 +7,6 @@ import {
   searchMovie,
   movieDetails,
   loginUser,
-  searchMovieClear,
 } from '../../redux/actions';
 
 const useActions = () => {
@@ -16,10 +15,6 @@ const useActions = () => {
   const searchMovieAction = useCallback(
     data => dispatch(searchMovie(data)),
     [dispatch],
-  );
-
-  const searchMovieClearAction = useCallback(
-    () => dispatch(searchMovieClear()), [dispatch],
   );
 
   const movieDetailsAction = useCallback(
@@ -32,7 +27,6 @@ const useActions = () => {
 
   return {
     searchMovieAction,
-    searchMovieClearAction,
     movieDetailsAction,
     loginUserAction,
   };

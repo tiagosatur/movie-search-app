@@ -2,7 +2,6 @@ import {
     SEARCH_MOVIE_PENDING,
     SEARCH_MOVIE_SUCCESS,
     SEARCH_MOVIE_ERROR,
-    SEARCH_MOVIE_CLEAR,
 } from '../../utils/actionTypes';
 
 
@@ -26,14 +25,6 @@ export function searchMovieError(error) {
     }
 }
 
-
-export function searchMovieClear(error) {
-    return {
-        type: SEARCH_MOVIE_CLEAR,
-    }
-}
-
-
 export const searchMovie = (query) => (dispatch) => {
     dispatch(searchMoviePending());
 
@@ -42,7 +33,7 @@ export const searchMovie = (query) => (dispatch) => {
     fetch(movieSearchURL+query)
     .then((res) => res.json())
     .then(res => {
-        if(res.Response == 'False') {
+        if(res.Response === 'False') {
             throw(res.Error)
         }
         dispatch(searchMovieSuccess(res))
