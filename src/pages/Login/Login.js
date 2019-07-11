@@ -44,9 +44,10 @@ const Login = (props) => {
     return (
         <>
             <StyledLoginMessage>
-                Você deve logar para ver a página 
+                You should be logged to access the page 
                 <strong> { from.pathname } </strong>
-                </StyledLoginMessage>
+            </StyledLoginMessage>
+
             <LoginForm onSubmit={onSubmit} />
         </>
     );

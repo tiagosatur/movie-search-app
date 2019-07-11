@@ -8,10 +8,10 @@ const Error = props => {
   } = props;
 
   return (
-    <>
+    <div className='error'>
         <p>Oops...</p>
         <StyledError>{message}</StyledError>
-    </>
+    </div>
 
   );
 };

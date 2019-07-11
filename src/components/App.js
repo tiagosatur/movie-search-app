@@ -7,15 +7,15 @@ import { GlobalStyle } from '../style/base/global';
 
 const App = () => {
     return(
-        <div>
+        <div className='app'>
             <GlobalStyle />
             <MainNav />
             <Grid>
                 <Switch>
-                    <Route path={PATHS.LOGIN.PATH} component={Login} />
                     <Route exact path={PATHS.HOME.PATH} component={Home} />
                     <Route path={PATHS.MOVIE.PATH} component={Movie} />
                     <PrivateRoute component={Dashboard} /> 
+                    <Route path={PATHS.LOGIN.PATH} component={Login} />
                 </Switch>
             </Grid>
         </div>

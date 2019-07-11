@@ -11,10 +11,11 @@ const LoginForm = props => {
     
 
     return(
-        <div>
+        <div className='login-form'>
             <StyledForm onSubmit={handleSubmit(onSubmit)}>
                 <Input 
                     name="username" 
+                    id='login-input-username'
                     placeholder='Username'
                     register={register({required: true})}
                     errors={errors}
@@ -22,11 +23,12 @@ const LoginForm = props => {
                 <Input 
                     type='password' 
                     name='password' 
+                    id='login-input-password'
                     register={register({required: true})} 
                     placeholder='Password'
                     errors={errors}
                 />
-                <Button type='submit' solid>Login</Button>
+                <Button type='submit' id='login-form-btn' solid>Login</Button>
                 
 
             </StyledForm>

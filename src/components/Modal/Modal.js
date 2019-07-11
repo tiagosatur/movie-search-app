@@ -10,8 +10,8 @@ const Modal = (props) => {
     } = props;
   
     return (
-      <ModalWrapper {...props}>
-        <ModalMain className="modal-main">
+      <ModalWrapper {...props} className="modal">
+        <ModalMain>
             
             <StyledIcon onClick={handleClose} icon={faWindowClose} />
             
@@ -22,7 +22,9 @@ const Modal = (props) => {
   };
 
 const StyledIcon = styled(FontAwesomeIcon)`
-    color: ${colorPallete.primary};
+    color: ${colorPallete.white};
+    border: ${rem(1)} solid ${colorPallete.primary};
+    border-radius: ${rem(3)};
     cursor: pointer;
     font-size: ${rem(40)};
     position: absolute;
@@ -47,7 +49,7 @@ const ModalMain = styled.div`
     background: ${colorPallete.white};
     height: auto;
     justify-content: center;
-    min-height: ${rem(490)};
+    min-height: ${rem(300)};
     padding: ${rem(32)} ${rem(16)};
     top: 50%;
     left: 50%;

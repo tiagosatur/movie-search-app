@@ -7,7 +7,7 @@ import { colorPallete, rem } from '../../style'
 
 
 const MainNav = () => (
-    <StyledNav>
+    <StyledNav className='main-nav'>
         <StyledLogo>
             <Link to={PATHS.HOME.PATH}><h1>MovieFlix</h1></Link>
         </StyledLogo>

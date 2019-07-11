@@ -10,13 +10,13 @@ const Dashboard = () => {
     } = useSelector(state => state);
 
     return(
-        <div>
-        <h2>Dashboard</h2>
-        <p>
-            Seja bem vindo 
-            <strong> { user.username} </strong>!
-        </p>
-    </div>
+        <div className='dashboard'>
+            <h2>Dashboard</h2>
+            <p>
+                Seja bem vindo 
+                <strong> { user.username} </strong>!
+            </p>
+        </div>
     )
 }
 

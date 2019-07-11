@@ -36,36 +36,30 @@ const MovieDetail = props => {
         const {
             Actors,
             Awards,
-            BoxOffice,
             Country,
-            DVD,
             Director,
             Genre,
             Language,
-            Metascore,
             Plot,
             Poster,
             Production,
             Rated,
             Ratings,
             Released,
-            Response,
             Runtime,
             Title,
-            Type,
             Website,
             Writer,
             Year,
             imdbID,
             imdbRating,
-            imdbVotes,
         } = movieDetails
 
         return( 
             <StyledMovieDetailsWrapper>
                 <StyledPosterWrapper>
                     {Poster !== 'N/A' 
-                        ? <img src={Poster} alt={Title} /> 
+                        ? <StyledImg src={Poster} alt={Title} /> 
                         : <SVGWrapper>
                             <FontAwesomeIcon icon={faFileImage} style={{fontSize: '100px'}} />
                             <span>Image unnavailable :(</span> 
@@ -80,26 +74,20 @@ const MovieDetail = props => {
                             <tr><th>IMDB ID</th><td>{imdbID}</td> </tr>
                             <tr><th>Actors</th><td>{Actors}</td> </tr>
                             <tr><th>Awards</th><td>{Awards}</td> </tr>
-                            <tr><th>BoxOffice</th><td>{BoxOffice}</td> </tr>
                             <tr><th>Country</th> <td>{Country}</td> </tr>
-                            <tr><th>DVD</th> <td>{DVD}</td> </tr>
                             <tr><th>Director</th> <td>{Director}</td> </tr>
                             <tr><th>Genre</th> <td>{Genre}</td> </tr>
                             <tr><th>Language</th><td>{Language}</td></tr>
-                            <tr><th>Metascore</th><td>{Metascore}</td></tr>
                             <tr><th>Plot</th><td>{Plot}</td></tr>
                             <tr><th>Production</th>  <td>{Production}</td></tr>
                             <tr><th>Rated</th><td>{Rated}</td></tr>
                             <tr><th>Ratings</th><td>{Ratings.map(Rating => {return <div>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
                             <tr><th>Released</th><td>{Released}</td></tr>
-                            <tr><th>Response</th><td>{Response}</td></tr>
                             <tr><th>Runtime</th><td>{Runtime}</td></tr>
                             <tr><th>Writer</th><td>{Writer}</td></tr>
                             <tr><th>Year</th><td>{Year}</td></tr>
-                            <tr><th>Type</th><td>{Type}</td></tr>
                             <tr><th>Website</th><td><a href={Website}>{Website}</a></td></tr>
                             <tr><th>imdbRating</th><td>{imdbRating}</td></tr>
-                            <tr><th>imdbVotes</th><td>{imdbVotes}</td></tr> 
                         </tbody>
                     </table>
                     
@@ -122,10 +110,23 @@ const StyledMovieDetailsWrapper = styled.div`
 
 const StyledPosterWrapper = styled.div`
     margin-right: 16px;
+
+    @media(min-width: 768px) {
+        width: 30%;
+    }
 `;
+const StyledImg = styled.img`
+    width: 100%;
+    height: auto;
+`;
+
 const StyledContent = styled.div`
     display: flex;
     flex-direction: column;
+
+    @media(min-width: 768px) {
+        width: 60%;
+    }
 `;
 
 const MovieTitle = styled.h2`

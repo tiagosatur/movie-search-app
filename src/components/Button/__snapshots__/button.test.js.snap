@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button tests should call Button snapshot correctly 1`] = `
+<button
+  className="button  sc-bdVaJa jllYbe"
+  onClick={[Function]}
+  title=""
+  type="submit"
+/>
+`;
