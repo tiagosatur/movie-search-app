@@ -2,7 +2,7 @@
   "name": "movie-search-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tiagosatur.github.io/movie-search-app",
+  "homepage": "https://tiagosatur.github.io/movie-search",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
@@ -45,6 +45,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "gh-pages": "^2.0.1",
     "jest-styled-components": "^6.3.3",
     "react-test-renderer": "^16.8.6"
   },
