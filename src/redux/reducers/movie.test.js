@@ -1,9 +1,8 @@
-import movie, { initiaState } from './index'
+import { movie, initialState } from './movie'
 import * as types from '../../utils/actionTypes'
-import { initialState } from './movie';
 import searchMovieApiMock from '../mocks/searchMovieApiMock';
 
-describe('reducers', () => {
+describe('MOVIE SEARCH reducer', () => {
     it('should return the next state and be successfull', () => {
       
       const action = {
@@ -12,26 +11,14 @@ describe('reducers', () => {
       }
 
       const expectedState = {
-        movie: {
-            ...initialState,
-            pending: false,
-            movie: searchMovieApiMock.Search,
-            totalResults: searchMovieApiMock.totalResults,
-        },
-        details: {
-          pending: false,
-          details: {},
-          error: null
-        },
-        user: {
-            pending: false,
-            isLogged: false,
-            user: {},
-            error: null
-        }
+        ...initialState,
+        pending: false,
+        movie: searchMovieApiMock.Search,
+        totalResults: searchMovieApiMock.totalResults,
+        
       }
 
-      expect(movie(initiaState, action)).toEqual(expectedState)
+      expect(movie(initialState, action)).toEqual(expectedState)
     });
 
 
@@ -45,27 +32,14 @@ describe('reducers', () => {
       }
 
       const expectedState = {
-        movie: {
-            ...initialState,
-            movie: [],
-            pending: false,
-            totalResults: 0,
-            error: error
-        },
-        details: {
+          ...initialState,
+          movie: [],
           pending: false,
-          details: {},
-          error: null
-        },
-        user: {
-            pending: false,
-            isLogged: false,
-            user: {},
-            error: null
-        }
-      }
+          totalResults: 0,
+          error: error
+      };
 
-      expect(movie(initiaState, action)).toEqual(expectedState)
+      expect(movie(initialState, action)).toEqual(expectedState)
     });
 })
 

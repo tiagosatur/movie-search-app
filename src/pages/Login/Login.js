@@ -9,6 +9,7 @@ import { LoadingSpinner } from '../../components';
 
 
 const Login = (props) => {
+    console.log('props',props);
     const { location: { state }, history } = props;
     const { loginUserAction } = useActions();
     const {
@@ -25,6 +26,7 @@ const Login = (props) => {
         if(redirect) {
             setRedirect(true)
         }
+        console.log('redirect', redirect);
     }, isLogged)
     
 
@@ -35,7 +37,7 @@ const Login = (props) => {
     
     let { from } = state || { from: { pathname: "/" } };
     
-    if(redirect) return <Redirect to={from} />
+    // if(redirect) return <Redirect to={from} />
 
     if(error) return <h3>Bad crendentials</h3>
 

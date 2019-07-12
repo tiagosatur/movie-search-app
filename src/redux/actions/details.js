@@ -4,20 +4,20 @@ import {
     MOVIE_DETAILS_ERROR,
 } from '../../utils/actionTypes';
 
-function movieDetailsPending() {
+export function movieDetailsPending() {
     return {
         type: MOVIE_DETAILS_PENDING
     }
 }
 
-export function movieDetailsSuccess(details) {    
+export function movieDetailsSuccess(details) {
     return {
         type: MOVIE_DETAILS_SUCCESS,
         details
     }
 }
 
-function movieDetailsError(error) {
+export function movieDetailsError(error) {
     return {
         type: MOVIE_DETAILS_ERROR,
         error: error
@@ -35,7 +35,6 @@ export const movieDetails = (id) => (dispatch) => {
         if(res.Response === 'False') {
             throw(res.Error)
         }
-        // setTimeout(() => {dispatch(movieDetailsSuccess(res))}, 2000)
         dispatch(movieDetailsSuccess(res))
         
     })

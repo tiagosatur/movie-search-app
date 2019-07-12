@@ -8,8 +8,8 @@ describe('App tests', () => {
 
   beforeEach(() => {
     wrapper = shallow(
-     <App />
-    ).dive();
+      <App />
+    );
   });
   
   it('should render the App element', () => {

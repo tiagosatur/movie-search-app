@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Page tests should call Movie snapshot correctly 1`] = `null`;
