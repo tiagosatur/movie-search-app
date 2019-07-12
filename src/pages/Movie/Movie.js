@@ -44,7 +44,7 @@ const Movie = ({ match }) => {
     }
 
     return (
-        <>
+        <div className='movie'>
             <div>
               <StyledForm onSubmit={handleSubmit}>
                 <DefaultInput 
@@ -91,7 +91,7 @@ const Movie = ({ match }) => {
                         />
                       </Modal>
             </StyledMovies>
-        </>
+        </div>
     )
     
 }
