@@ -23,10 +23,8 @@ const Login = (props) => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        if(redirect) {
-            setRedirect(true)
-        }
-        console.log('redirect', redirect);
+        if(redirect) setRedirect(true)
+        
     }, isLogged)
     
 
@@ -37,7 +35,7 @@ const Login = (props) => {
     
     let { from } = state || { from: { pathname: "/" } };
     
-    // if(redirect) return <Redirect to={from} />
+    if(redirect) return <Redirect to={from} />
 
     if(error) return <h3>Bad crendentials</h3>
 

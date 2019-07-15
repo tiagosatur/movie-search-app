@@ -1,6 +1,6 @@
 const searchMovieApiMock = {
     "pending": false,
-    "movie": [{
+    "list": [{
         "Title": "Batman Begins",
         "Year": "2005",
         "imdbID": "tt0372784",

@@ -7,7 +7,6 @@ import { spy } from 'sinon';
 
 describe('LoginForm tests', () => {
   let wrapper;
-  let mountedWrapper;
   const callback = jest.fn();
 
   beforeEach(() => {

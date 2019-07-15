@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App'
+import App from './App'
 import reducers from './redux/reducers'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

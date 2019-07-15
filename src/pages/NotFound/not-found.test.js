@@ -3,29 +3,27 @@ import {  Provider } from 'react-redux'
 import { initialState } from '../../redux/reducers/movie';
 import { mount, shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import ConnectedMovie, { Movie } from './Movie';
-
-import {  MemoryRouter, StaticRouter } from "react-router";
+import NotFound from './NotFound';
+import { StaticRouter } from "react-router";
 
 import { createStore } from 'redux';
 import rootReducer from '../../redux/reducers'
 
-describe('Movie Page tests', () => {
+describe('NotFound Page tests', () => {
     let store = createStore(rootReducer, initialState);
     
     const wrapper =  mount(
         <Provider store={store}>
-            <MemoryRouter initialEntries={[ '/movies' ]}>
-                <ConnectedMovie />
-            </MemoryRouter>
+            <StaticRouter>
+                <NotFound />
+            </StaticRouter>
         </Provider>
     )
 
-    it('should call Movie snapshot correctly', () => {
+    it('should call NotFound snapshot correctly', () => {
         const tree = renderer
             .create(wrapper)
             .toJSON();
         expect(tree).toMatchSnapshot();
-        });
+    });
 })
-

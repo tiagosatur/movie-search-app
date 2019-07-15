@@ -3,7 +3,7 @@ import {
     SEARCH_MOVIE_SUCCESS,
     SEARCH_MOVIE_ERROR,
 } from '../../utils/actionTypes';
-
+import { api } from '../../services';
 
 export function searchMoviePending() {
     return {
@@ -11,10 +11,10 @@ export function searchMoviePending() {
     }
 }
 
-export function searchMovieSuccess(movie) {
+export function searchMovieSuccess(list) {
     return {
         type: SEARCH_MOVIE_SUCCESS,
-        movie
+        list
     }
 }
 
@@ -27,6 +27,13 @@ export function searchMovieError(error) {
 
 export const searchMovie = (query) => (dispatch) => {
     dispatch(searchMoviePending());
+
+    api
+        .movie
+        .search(query)
+        .then((res) => {
+            
+        })
 
     const movieSearchURL = `http://www.omdbapi.com/?apikey=1244f9a6&page=1&s=`
     

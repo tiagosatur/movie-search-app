@@ -6,19 +6,19 @@ import {
 
 export const initialState = {
     pending: false,
-    movie: [],
+    list: [],
     totalResults: 0,
     error: null
 }
 
 export const movie = ( state = initialState, action ) => {
-    const { type, movie, error } = action;
+    const { type, list, error } = action;
 
     switch(type) {
         case SEARCH_MOVIE_PENDING:
             return {
                 ...state,
-                movie: [],
+                list: [],
                 totalResults: 0,
                 pending: true
             };
@@ -26,14 +26,14 @@ export const movie = ( state = initialState, action ) => {
             return {
                 ...state,
                 pending: false,
-                movie: movie.Search,
-                totalResults: movie.totalResults,
+                list: list.Search,
+                totalResults: list.totalResults,
                 error: null,
             };
         case SEARCH_MOVIE_ERROR:
             return {
                 ...state,
-                movie: [],
+                list: [],
                 pending: false,
                 totalResults: 0,
                 error: error
