@@ -27,26 +27,13 @@ export function searchMovieError(error) {
 
 export const searchMovie = (query) => (dispatch) => {
     dispatch(searchMoviePending());
-
-    api
-        .movie
+    
+    api.movie
         .search(query)
         .then((res) => {
-            
+            dispatch(searchMovieSuccess(res))
         })
-
-    const movieSearchURL = `http://www.omdbapi.com/?apikey=1244f9a6&page=1&s=`
-    
-    fetch(movieSearchURL+query)
-    .then((res) => res.json())
-    .then(res => {
-        if(res.Response === 'False') {
-            throw(res.Error)
-        }
-        dispatch(searchMovieSuccess(res))
-
-    })
-    .catch(error => {
-        dispatch(searchMovieError(error));
-    })
+        .catch((error) => {
+            dispatch(searchMovieError(error));
+        })
 }

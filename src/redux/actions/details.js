@@ -3,6 +3,7 @@ import {
     MOVIE_DETAILS_SUCCESS,
     MOVIE_DETAILS_ERROR,
 } from '../../utils/actionTypes';
+import { api } from '../../services';
 
 export function movieDetailsPending() {
     return {
@@ -27,18 +28,12 @@ export function movieDetailsError(error) {
 export const movieDetails = (id) => (dispatch) => {
     dispatch(movieDetailsPending());
 
-    const movieSearchURL = `http://www.omdbapi.com/?apikey=1244f9a6&page=1&i=`
-    
-    fetch(movieSearchURL+id)
-    .then((res) => res.json())
-    .then(res => {
-        if(res.Response === 'False') {
-            throw(res.Error)
-        }
-        dispatch(movieDetailsSuccess(res))
-        
-    })
-    .catch(error => {
-        dispatch(movieDetailsError(error));
-    })
+    api.movie
+        .details(id)
+        .then((res) => {
+            dispatch(movieDetailsSuccess(res))
+        })
+        .catch((error) => {
+            dispatch(movieDetailsError(error));
+        })
 }
