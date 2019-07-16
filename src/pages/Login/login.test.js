@@ -4,7 +4,7 @@ import { initialState } from '../../redux/reducers/movie';
 import { mount, shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import ConnectedLogin, {Login} from './Login';
-import {  StaticRouter, MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router";
 import { createStore } from 'redux';
 import rootReducer from '../../redux/reducers'
 
@@ -13,9 +13,9 @@ describe('Login Page tests', () => {
     
     const wrapper =  mount(
         <Provider store={store}>
-            <StaticRouter initialEntries={[ '/login' ]}>
+            <MemoryRouter initialEntries={[ '/login' ]}>
                 <ConnectedLogin />
-            </StaticRouter>
+            </MemoryRouter>
         </Provider>
     )
 

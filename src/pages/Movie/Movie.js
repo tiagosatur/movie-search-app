@@ -47,7 +47,6 @@ export const Movie = ({
       if(searchValue) {
         searchMovieAction(searchValue);
       }
-     
     }
 
     const toggleModal = () => {
@@ -57,7 +56,7 @@ export const Movie = ({
     return (
         <div className='movies'>
             <div>
-              <StyledForm onSubmit={handleSubmit}>
+              <StyledForm className='search-form' onSubmit={handleSubmit}>
                 <DefaultInput 
                     name='searchValue' 
                     value={values.searchValue}
@@ -136,7 +135,6 @@ const StyledForm = styled.form`
 `;
 
 const mapStateToProps = state => {
-  console.log('state', state.movie);
   return {
     movies: state.movie.list,
     totalResults: state.movie.totalResults,

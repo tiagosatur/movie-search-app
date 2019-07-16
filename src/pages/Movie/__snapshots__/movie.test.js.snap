@@ -6,7 +6,7 @@ exports[`Movie Page tests should call Movie snapshot correctly 1`] = `
 >
   <div>
     <form
-      className="sc-kkGfuU lciZVM"
+      className="search-form sc-kkGfuU lciZVM"
       onSubmit={[Function]}
     >
       <input
