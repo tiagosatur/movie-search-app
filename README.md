@@ -6,6 +6,8 @@ This project aims to search movies and see its details.
 
 It was built with React, Redux, React Router, Styled Components and tested with Jest.
 
+For now we made unit test for all redux actions and reducers, api, and snapshot test for the majority of pages and components.
+
 
 ## Available Scripts
 
