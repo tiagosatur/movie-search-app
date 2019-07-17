@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Summary component test should call App snapshot correctly 1`] = `
+<div
+  className="sc-bdVaJa bUujvC"
+>
+  <div
+    className="sc-bwzfXH laJbGY"
+  >
+    <img
+      alt="Avatar"
+      className="sc-htpNat jPUyTb"
+      src="http://www.mayimage.com/#123"
+    />
+  </div>
+  <div>
+    <h2
+      className="sc-bxivhb bvvINP"
+    >
+      Avatar
+    </h2>
+    <p
+      className="sc-ifAKCX cRvWwb"
+    >
+      Some plot writen ramdomly
+    </p>
+  </div>
+</div>
+`;

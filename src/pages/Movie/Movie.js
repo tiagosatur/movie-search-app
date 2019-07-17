@@ -3,6 +3,7 @@ import { useSelector, connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { withRouter } from "react-router";
+import uniqid from 'uniqid';
 
 import { searchMovie } from '../../redux/actions'
 
@@ -14,7 +15,7 @@ import useFormInput from '../../utils/hooks/useFormInput';
 import { MovieDetail } from './MovieDetail'
 import { MovieSummary } from './MovieSummary'
 import { rem } from '../../style';
-import uniqueId from '../../utils/uniqueId'
+
 
 export const Movie = ({
    match, 
@@ -83,7 +84,7 @@ export const Movie = ({
                   const { Title, Poster, Plot, imdbID } = m
 
                   return(
-                    <StyledMovieItem key={uniqueId()} className='search-list__item'>
+                    <StyledMovieItem key={uniqid()} className='search-list__item'>
                       <Link to={`${match.url}/${imdbID}`} onClick={setShowModal}>
                         <MovieSummary data={{Title, Poster, Plot}} />
                       </Link>
