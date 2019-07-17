@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { withRouter } from "react-router";
+import uniqid from 'uniqid';
+
+import { searchMovie } from '../../redux/actions'
 
 import useActions from '../../utils/hooks/useActions';
 import { 
@@ -11,23 +15,30 @@ import useFormInput from '../../utils/hooks/useFormInput';
 import { MovieDetail } from './MovieDetail'
 import { MovieSummary } from './MovieSummary'
 import { rem } from '../../style';
-import uniqueId from '../../utils/uniqueId'
 
-const Movie = ({ match }) => {
+
+export const Movie = ({
+   match, 
+   searchMovieAction,
+   movies,
+   totalResults,
+   pending,
+   error,
+  }, props) => {
     const [ showModal, setShowModal ] = useState(false);
-    const { searchMovieAction } = useActions();
+    //const { searchMovieAction } = useActions();
     const { values, handleInputChange } = useFormInput({
-      searchValue: '',
+      searchValue: '', 
     });
     
-    const {
+    /* const {
         movie: {
           movie,
           totalResults,
           pending,
           error,
         },
-    } = useSelector(state => state);
+    } = useSelector(state => state); */
     
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -36,7 +47,6 @@ const Movie = ({ match }) => {
       if(searchValue) {
         searchMovieAction(searchValue);
       }
-     
     }
 
     const toggleModal = () => {
@@ -44,9 +54,9 @@ const Movie = ({ match }) => {
     }
 
     return (
-        <>
+        <div className='movies'>
             <div>
-              <StyledForm onSubmit={handleSubmit}>
+              <StyledForm className='search-form' onSubmit={handleSubmit}>
                 <DefaultInput 
                     name='searchValue' 
                     value={values.searchValue}
@@ -61,7 +71,7 @@ const Movie = ({ match }) => {
 
             { error && <Error message={error} /> }
 
-            { movie && movie.length > 0 && !pending && !error && (
+            { movies && movies.length > 0 && !pending && !error && (
               <p>
                 We found <strong>{ totalResults }</strong>
                 {totalResults == 1 ? 'result!' : ' results!'}
@@ -70,11 +80,11 @@ const Movie = ({ match }) => {
 
             <StyledMovies>
             
-              {movie && movie.map((m) => {
+              {movies && movies.map((m) => {
                   const { Title, Poster, Plot, imdbID } = m
 
                   return(
-                    <StyledMovieItem key={uniqueId()}>
+                    <StyledMovieItem key={uniqid()} className='search-list__item'>
                       <Link to={`${match.url}/${imdbID}`} onClick={setShowModal}>
                         <MovieSummary data={{Title, Poster, Plot}} />
                       </Link>
@@ -84,14 +94,14 @@ const Movie = ({ match }) => {
                 })
               }
               <Modal handleClose={toggleModal} show={showModal}>
-                        <Route
-                          exact
-                          path={`${ match.path }/:imdbID`}
-                          render={(props) => <MovieDetail data={movie} {...props} /> }
-                        />
-                      </Modal>
+                <Route
+                  exact
+                  path={`${ match.path }/:imdbID`}
+                  render={(props) => <MovieDetail {...props} /> }
+                />
+              </Modal>
             </StyledMovies>
-        </>
+        </div>
     )
     
 }
@@ -100,7 +110,7 @@ const StyledMovies = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const StyledMovieItem = styled.div`
+export const StyledMovieItem = styled.div`
   margin: ${rem(16)};
   width: 20%;
 `;
@@ -124,5 +134,20 @@ const StyledForm = styled.form`
   }
 `;
 
+const mapStateToProps = state => {
+  return {
+    movies: state.movie.list,
+    totalResults: state.movie.totalResults,
+    pending: state.movie.pending,
+    error: state.movie.error,
+  }
+};
 
-export default Movie;
+const mapDispatchToProps = dispatch => ({
+  searchMovieAction: data => dispatch(searchMovie(data))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Movie));

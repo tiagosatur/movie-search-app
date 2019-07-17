@@ -4,7 +4,7 @@ import dualRing from '../../style/animations/dualRinrg';
 import { colorPallete, rem } from '../../style';
 
 const LoadingSpinner = props => (
-    <LoadingWrapper>
+    <LoadingWrapper className='loading-spinner'>
       <StyledLoadingSpinner { ...props } />
     </LoadingWrapper>
 );

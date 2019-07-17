@@ -17,7 +17,8 @@
     "react-scripts": "3.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.3.1"
+    "styled-components": "^4.3.1",
+    "uniqid": "^5.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,6 +26,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,7 +49,9 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "gh-pages": "^2.0.1",
     "jest-styled-components": "^6.3.3",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.3.2"
   },
   "setupFiles": [
     "<rootDir>/config/polyfills.js",

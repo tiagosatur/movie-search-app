@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input tests should call Input snapshot correctly 1`] = `
+<div
+  className="sc-bdVaJa gBePXc"
+>
+  <input
+    className="input  sc-bwzfXH bqcSTh"
+    id="input-username"
+    name="username"
+    type="text"
+  />
+  <span
+    className="field-error sc-htpNat iRpXGe"
+    name="username"
+  >
+    x
+  </span>
+</div>
+`;

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Page tests should call App snapshot correctly 1`] = `
+<div
+  className="app"
+>
+  <nav
+    className="main-nav sc-dnqmqq blrMxR"
+  >
+    <div
+      className="sc-gZMcBi cZvPkw"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <h1>
+          MovieFlix
+        </h1>
+      </a>
+    </div>
+    <ul
+      className="sc-iwsKbI tmwtu"
+    >
+      <li>
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/movies"
+          onClick={[Function]}
+        >
+          Movies
+        </a>
+      </li>
+      <li>
+        <a
+          href="/dashboard"
+          onClick={[Function]}
+        >
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="grid sc-EHOje injBFG"
+  >
+    <div>
+      <h2>
+        Home
+      </h2>
+      <p>
+        Wecome to the application main page
+      </p>
+    </div>
+  </div>
+</div>
+`;

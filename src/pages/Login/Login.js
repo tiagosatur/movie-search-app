@@ -1,30 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withRouter } from "react-router";
 import styled from 'styled-components';
 import { rem } from '../../style';
 import { useActions } from '../../utils/hooks';
+import { loginUser } from '../../redux'
 import { LoginForm } from '../../components/Form'
 import { LoadingSpinner } from '../../components';
 
 
-const Login = (props) => {
-    const { location: { state }, history } = props;
-    const { loginUserAction } = useActions();
-    const {
+export const Login = (props) => {
+    const { 
+        location: { state }, 
+        history,
+        isLogged,
+        pending,
+        error,
+        loginUserAction,
+    } = props;
+
+    /*const { loginUserAction } = useActions();
+
+     const {
         user: {
           isLogged,
           pending,
           error,
         },
-    } = useSelector(state => state);
+    } = useSelector(state => state); */
 
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        if(redirect) {
-            setRedirect(true)
-        }
+        if(redirect) setRedirect(true)
+        
     }, isLogged)
     
 
@@ -42,13 +52,14 @@ const Login = (props) => {
     if(pending) return <LoadingSpinner />
 
     return (
-        <>
+        <div className='login-page'>
             <StyledLoginMessage>
-                Você deve logar para ver a página 
+                You should be logged to access the page 
                 <strong> { from.pathname } </strong>
-                </StyledLoginMessage>
+            </StyledLoginMessage>
+
             <LoginForm onSubmit={onSubmit} />
-        </>
+        </div>
     );
 }
 
@@ -58,4 +69,20 @@ const StyledLoginMessage = styled.p`
    margin: ${rem(50)} 0;
 `;
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        isLogged: state.user.isLogged,
+        pending: state.user.pending,
+        error: state.user.error,
+    }
+};
+  
+const mapDispatchToProps = dispatch => ({
+    loginUserAction: data => dispatch(loginUser(data))
+})
+
+  
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(Login));

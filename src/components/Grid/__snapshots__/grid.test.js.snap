@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid tests should call Grid snapshot correctly 1`] = `
+<div
+  className="grid sc-bdVaJa kcCvpD"
+>
+  <div>
+    Some Grid content
+  </div>
+</div>
+`;

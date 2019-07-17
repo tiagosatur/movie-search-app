@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import uniqid from 'uniqid';
 
-import { PATHS } from '../../utils/variables';
+import { PATHS } from '../../utils';
 import { colorPallete, rem } from '../../style'
 
 
 const MainNav = () => (
-    <StyledNav>
+    <StyledNav className='main-nav'>
         <StyledLogo>
             <Link to={PATHS.HOME.PATH}><h1>MovieFlix</h1></Link>
         </StyledLogo>
@@ -15,8 +16,8 @@ const MainNav = () => (
             {
                 Object.keys(PATHS).map((item) => (
                     
-                    <li key={PATHS[item].PATH}>
-                        <Link to={PATHS[item].PATH}>{PATHS[item].LABEL}</Link>
+                    <li key={uniqid()}>
+                        <Link to={PATHS[item].PATH} key={uniqid()}>{PATHS[item].LABEL}</Link>
                     </li>
                 ))
             }

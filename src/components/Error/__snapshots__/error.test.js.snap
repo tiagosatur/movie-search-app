@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error tests should call Error snapshot correctly 1`] = `
+<div
+  className="error"
+>
+  <p>
+    Oops...
+  </p>
+  <h3
+    className="sc-bdVaJa eCtpUH"
+  >
+    Error message
+  </h3>
+</div>
+`;

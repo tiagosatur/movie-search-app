@@ -1,15 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { PATHS } from '../../utils/variables';
 
 
-const PrivateRoute = ({ component: Component, ...rest }) =>  {
-    const {
+const PrivateRoute = ({ component: Component, isLogged, ...rest}) =>  {
+    /* const {
         user: {
           isLogged,
         },
-    } = useSelector(state => state);
+    } = useSelector(state => state); */
 
     return (
         <Route
@@ -29,5 +29,13 @@ const PrivateRoute = ({ component: Component, ...rest }) =>  {
         />
     );
 }
+const mapStateToProps = state => {
+    return {
+      isLogged: state.user.isLogged,
+    }
+};
 
-export default PrivateRoute;
+export default connect(
+    mapStateToProps,
+    null
+)(PrivateRoute);

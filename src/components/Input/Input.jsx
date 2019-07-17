@@ -32,7 +32,7 @@ const Input = props => {
         onKeyUp={handleKeyUp}
       />
       {errors[name] ? (
-        <StyledSpan errors={errors} name={name}>
+        <StyledSpan errors={errors} name={name} className='field-error'>
           {errors[name] && errors[name].message}
         </StyledSpan>
       ) : null}

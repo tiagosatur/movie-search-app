@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from '../../style'
 
-const Grid = ({children}) => <StyledGrid>{children}</StyledGrid>
+const Grid = ({children}) => <StyledGrid className='grid'>{children}</StyledGrid>
 
 const StyledGrid = styled.div`
     height: 100%;

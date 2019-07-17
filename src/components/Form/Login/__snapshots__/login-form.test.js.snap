@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm tests should call LoginForm snapshot correctly 1`] = `
+<div>
+  <form
+    className="login-form sc-fjdhpX kNBbKB"
+    onSubmit={[Function]}
+  >
+    <div
+      className="sc-htpNat bqYrTX"
+    >
+      <input
+        className="input  sc-bxivhb izmEcM"
+        id="login-input-username"
+        name="username"
+        placeholder="Username"
+        type="text"
+      />
+    </div>
+    <div
+      className="sc-htpNat bqYrTX"
+    >
+      <input
+        className="input  sc-bxivhb izmEcM"
+        id="login-input-password"
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <button
+      className="button  sc-bdVaJa jllYbe"
+      id="login-form-btn"
+      title=""
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;

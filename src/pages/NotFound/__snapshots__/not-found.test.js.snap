@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound Page tests should call NotFound snapshot correctly 1`] = `
+<div>
+  <h2>
+    Page not found
+  </h2>
+  <p>
+    We could not find this page =(
+  </p>
+  <p>
+    Maybe you wanna search some movies at movie page?
+  </p>
+</div>
+`;
