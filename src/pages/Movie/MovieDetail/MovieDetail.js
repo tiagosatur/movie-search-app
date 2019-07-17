@@ -1,29 +1,40 @@
 import React, { useEffect } from 'react';
+import { withRouter } from "react-router";
 import styled from 'styled-components';
-
-import { useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileImage } from '@fortawesome/free-regular-svg-icons'
+import uniqid from 'uniqid';
 
 import useActions from '../../../utils/hooks/useActions';
+import { movieDetails } from '../../../redux/actions'
 import { LoadingSpinner } from '../../../components'
 import { colorPallete, rem } from '../../../style'
 
-const MovieDetail = props => {
-    const { match: { params: { imdbID }} } = props;
+export const MovieDetail = props => {
+    const {
+        match,
+        match: { params: { imdbID }},
+        movieDetailsAction,
+        movieDetails,
+        pending,
+        error,
+    } = props;
+
+   /*  
     const { movieDetailsAction } = useActions();
-
-    useEffect(() => {
-        movieDetailsAction(imdbID);
-    }, [imdbID])
-
     const {
         details: {
           details: movieDetails,
           pending,
           error,
         },
-    } = useSelector(state => state);
+    } = useSelector(state => state); 
+    */
+
+    useEffect(() => {
+        movieDetailsAction(imdbID);
+    }, [imdbID])
 
     if(pending) return <LoadingSpinner />
     
@@ -56,7 +67,7 @@ const MovieDetail = props => {
         } = movieDetails
 
         return( 
-            <StyledMovieDetailsWrapper>
+            <StyledMovieDetailsWrapper key={uniqid()} className='movie-details'>
                 <StyledPosterWrapper>
                     {Poster !== 'N/A' 
                         ? <StyledImg src={Poster} alt={Title} /> 
@@ -71,17 +82,17 @@ const MovieDetail = props => {
 
                     <table>
                         <tbody>
-                            <tr><th>IMDB ID</th><td>{imdbID}</td> </tr>
-                            <tr><th>Actors</th><td>{Actors}</td> </tr>
-                            <tr><th>Awards</th><td>{Awards}</td> </tr>
-                            <tr><th>Country</th> <td>{Country}</td> </tr>
-                            <tr><th>Director</th> <td>{Director}</td> </tr>
-                            <tr><th>Genre</th> <td>{Genre}</td> </tr>
+                            <tr><th>IMDB ID</th><td>{imdbID}</td></tr>
+                            <tr><th>Actors</th><td>{Actors}</td></tr>
+                            <tr><th>Awards</th><td>{Awards}</td></tr>
+                            <tr><th>Country</th><td>{Country}</td></tr>
+                            <tr><th>Director</th><td>{Director}</td></tr>
+                            <tr><th>Genre</th><td>{Genre}</td></tr>
                             <tr><th>Language</th><td>{Language}</td></tr>
                             <tr><th>Plot</th><td>{Plot}</td></tr>
-                            <tr><th>Production</th>  <td>{Production}</td></tr>
+                            <tr><th>Production</th><td>{Production}</td></tr>
                             <tr><th>Rated</th><td>{Rated}</td></tr>
-                            <tr><th>Ratings</th><td>{Ratings.map(Rating => {return <div>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
+                            <tr><th>Ratings</th><td>{Ratings && Ratings.map(Rating => {return <div key={uniqid()}>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
                             <tr><th>Released</th><td>{Released}</td></tr>
                             <tr><th>Runtime</th><td>{Runtime}</td></tr>
                             <tr><th>Writer</th><td>{Writer}</td></tr>
@@ -151,5 +162,19 @@ const SVGWrapper = styled.div`
     }
 `;
 
+const mapStateToProps = state => {
+    return {
+        movieDetails: state.details.details,
+        pending: state.details.pending,
+        error: state.details.error,
+    }
+};
+  
+const mapDispatchToProps = dispatch => ({
+    movieDetailsAction: imdbID => dispatch(movieDetails(imdbID))
+})
 
-export default MovieDetail;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(MovieDetail));

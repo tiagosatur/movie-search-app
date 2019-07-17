@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm tests should call LoginForm snapshot correctly 1`] = `
-<div
-  className="login-form"
->
+<div>
   <form
-    className="sc-fjdhpX kNBbKB"
+    className="login-form sc-fjdhpX kNBbKB"
     onSubmit={[Function]}
   >
     <div

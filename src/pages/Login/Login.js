@@ -10,7 +10,7 @@ import { LoginForm } from '../../components/Form'
 import { LoadingSpinner } from '../../components';
 
 
-const Login = (props) => {
+export const Login = (props) => {
     const { 
         location: { state }, 
         history,
@@ -52,14 +52,14 @@ const Login = (props) => {
     if(pending) return <LoadingSpinner />
 
     return (
-        <>
+        <div className='login-page'>
             <StyledLoginMessage>
                 You should be logged to access the page 
                 <strong> { from.pathname } </strong>
             </StyledLoginMessage>
 
             <LoginForm onSubmit={onSubmit} />
-        </>
+        </div>
     );
 }
 

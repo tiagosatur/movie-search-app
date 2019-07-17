@@ -11,7 +11,7 @@ exports[`Input tests should call Input snapshot correctly 1`] = `
     type="text"
   />
   <span
-    className="sc-htpNat iRpXGe"
+    className="field-error sc-htpNat iRpXGe"
     name="username"
   >
     x

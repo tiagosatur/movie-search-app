@@ -9,10 +9,9 @@ const LoginForm = props => {
     const { onSubmit } = props
     const { register, handleSubmit, errors } = useForm();
     
-
     return(
-        <div className='login-form'>
-            <StyledForm onSubmit={handleSubmit(onSubmit)}>
+        <div>
+            <StyledForm onSubmit={handleSubmit(onSubmit)} className='login-form'>
                 <Input 
                     name="username" 
                     id='login-input-username'

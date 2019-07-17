@@ -1,6 +1,6 @@
 import * as actions from './movies'
 import * as types from '../../utils/actionTypes'
-import searchMovieApiMock from '../mocks/searchMovieApiMock'
+import searchMovieApiMock from '../../mocks/searchMovieApiMock'
 
 describe('actions', () => {
     it('should make the request and be successfull', () => {

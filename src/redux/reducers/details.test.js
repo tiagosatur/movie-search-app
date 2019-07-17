@@ -1,6 +1,6 @@
 import { details, initialState } from './details'
 import * as types from '../../utils/actionTypes'
-import movieDetailsApiMock from '../mocks/movieDetailsApiMock';
+import movieDetailsApiMock from '../../mocks/movieDetailsApiMock';
 
 describe('DETAILS reducer', () => {
     it('should return the next state and be successfull', () => {

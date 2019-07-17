@@ -25,7 +25,6 @@ export const Movie = ({
    error,
   }, props) => {
     const [ showModal, setShowModal ] = useState(false);
-    
     //const { searchMovieAction } = useActions();
     const { values, handleInputChange } = useFormInput({
       searchValue: '', 
@@ -84,7 +83,7 @@ export const Movie = ({
                   const { Title, Poster, Plot, imdbID } = m
 
                   return(
-                    <StyledMovieItem key={uniqueId()}>
+                    <StyledMovieItem key={uniqueId()} className='search-list__item'>
                       <Link to={`${match.url}/${imdbID}`} onClick={setShowModal}>
                         <MovieSummary data={{Title, Poster, Plot}} />
                       </Link>
@@ -110,7 +109,7 @@ const StyledMovies = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const StyledMovieItem = styled.div`
+export const StyledMovieItem = styled.div`
   margin: ${rem(16)};
   width: 20%;
 `;

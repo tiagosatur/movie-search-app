@@ -1,6 +1,6 @@
 import { movie, initialState } from './movie'
 import * as types from '../../utils/actionTypes'
-import searchMovieApiMock from '../mocks/searchMovieApiMock';
+import searchMovieApiMock from '../../mocks/searchMovieApiMock';
 
 describe('MOVIE SEARCH reducer', () => {
     it('returns initial state', () => {
