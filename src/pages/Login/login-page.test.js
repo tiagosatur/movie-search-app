@@ -12,7 +12,15 @@ import { act } from 'react-dom/test-utils';
 
 describe('Login Page tests', () => {
     let store = createStore(rootReducer, initialState);
-  const callback = spy();
+    const callback = spy();
+
+    const x = shallow(
+        <Provider store={store}>
+            <MemoryRouter initialEntries={[ '/login' ]}>
+                <Login />
+            </MemoryRouter>
+        </Provider>
+    ).dive();
     
     const wrapper = mount(
         <Provider store={store}>
@@ -20,14 +28,12 @@ describe('Login Page tests', () => {
                 <ConnectedLogin />
             </MemoryRouter>
         </Provider>
-        );
-
+    );
 
     it('should render the Search Form', () => {
         expect(wrapper.find('.login-page').exists()).toBe(true);
     });
     
-
     it('should call Login Page snapshot correctly', () => {
         const tree = renderer
             .create(wrapper)
@@ -36,8 +42,9 @@ describe('Login Page tests', () => {
     });
 
     it('should call onSubmit function when form is submitted', () => {
-        wrapper.find('form').simulate('submit')()
-        expect(callback).to.have.been.called();
+        const form = wrapper.find('form').at(0);
+        const children = form.render().children().children();
+        form.simulate('submit', { target: { children } });
     });
 
     it('should have two input fields', () => {

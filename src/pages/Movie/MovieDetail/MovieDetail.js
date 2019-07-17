@@ -38,76 +38,71 @@ export const MovieDetail = props => {
 
     if(pending) return <LoadingSpinner />
     
-    if(error) return <div>
-            <p>Oops...</p>
-            <h3>{error}</h3>
-        </div>
+    if(error) return <div> <p>Oops...</p> <h3>{error}</h3></div>
 
-    if(Object.keys(movieDetails).length !== 0) {
-        const {
-            Actors,
-            Awards,
-            Country,
-            Director,
-            Genre,
-            Language,
-            Plot,
-            Poster,
-            Production,
-            Rated,
-            Ratings,
-            Released,
-            Runtime,
-            Title,
-            Website,
-            Writer,
-            Year,
-            imdbID,
-            imdbRating,
-        } = movieDetails
-
-        return( 
-            <StyledMovieDetailsWrapper key={uniqid()} className='movie-details'>
-                <StyledPosterWrapper>
-                    {Poster !== 'N/A' 
-                        ? <StyledImg src={Poster} alt={Title} /> 
-                        : <SVGWrapper>
-                            <FontAwesomeIcon icon={faFileImage} style={{fontSize: '100px'}} />
-                            <span>Image unnavailable :(</span> 
-                        </SVGWrapper>
-                    }
-                </StyledPosterWrapper>
-                <StyledContent>
-                    <MovieTitle>{Title}</MovieTitle>
-
-                    <table>
-                        <tbody>
-                            <tr><th>IMDB ID</th><td>{imdbID}</td></tr>
-                            <tr><th>Actors</th><td>{Actors}</td></tr>
-                            <tr><th>Awards</th><td>{Awards}</td></tr>
-                            <tr><th>Country</th><td>{Country}</td></tr>
-                            <tr><th>Director</th><td>{Director}</td></tr>
-                            <tr><th>Genre</th><td>{Genre}</td></tr>
-                            <tr><th>Language</th><td>{Language}</td></tr>
-                            <tr><th>Plot</th><td>{Plot}</td></tr>
-                            <tr><th>Production</th><td>{Production}</td></tr>
-                            <tr><th>Rated</th><td>{Rated}</td></tr>
-                            <tr><th>Ratings</th><td>{Ratings && Ratings.map(Rating => {return <div key={uniqid()}>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
-                            <tr><th>Released</th><td>{Released}</td></tr>
-                            <tr><th>Runtime</th><td>{Runtime}</td></tr>
-                            <tr><th>Writer</th><td>{Writer}</td></tr>
-                            <tr><th>Year</th><td>{Year}</td></tr>
-                            <tr><th>Website</th><td><a href={Website}>{Website}</a></td></tr>
-                            <tr><th>imdbRating</th><td>{imdbRating}</td></tr>
-                        </tbody>
-                    </table>
-                    
-                </StyledContent>
-            </StyledMovieDetailsWrapper>
-        )
-    } else {
+    if(movieDetails === undefined || Object.keys(movieDetails).length == 0) 
         return <h2>Nothing encountered</h2>
-    }
+
+    const {
+        Actors,
+        Awards,
+        Country,
+        Director,
+        Genre,
+        Language,
+        Plot,
+        Poster,
+        Production,
+        Rated,
+        Ratings,
+        Released,
+        Runtime,
+        Title,
+        Website,
+        Writer,
+        Year,
+        imdbRating,
+    } = movieDetails
+
+    return( 
+        <StyledMovieDetailsWrapper key={uniqid()} className='movie-details'>
+            <StyledPosterWrapper>
+                {Poster !== 'N/A' 
+                    ? <StyledImg src={Poster} alt={Title} /> 
+                    : <SVGWrapper>
+                        <FontAwesomeIcon icon={faFileImage} style={{fontSize: '100px'}} />
+                        <span>Image unnavailable :(</span> 
+                    </SVGWrapper>
+                }
+            </StyledPosterWrapper>
+            <StyledContent>
+                <MovieTitle>{Title}</MovieTitle>
+
+                <table>
+                    <tbody>
+                        <tr><th>IMDB ID</th><td>{imdbID}</td></tr>
+                        <tr><th>Actors</th><td>{Actors}</td></tr>
+                        <tr><th>Awards</th><td>{Awards}</td></tr>
+                        <tr><th>Country</th><td>{Country}</td></tr>
+                        <tr><th>Director</th><td>{Director}</td></tr>
+                        <tr><th>Genre</th><td>{Genre}</td></tr>
+                        <tr><th>Language</th><td>{Language}</td></tr>
+                        <tr><th>Plot</th><td>{Plot}</td></tr>
+                        <tr><th>Production</th><td>{Production}</td></tr>
+                        <tr><th>Rated</th><td>{Rated}</td></tr>
+                        <tr><th>Ratings</th><td>{Ratings && Ratings.map(Rating => {return <div key={uniqid()}>{Rating.Source} - {Rating.Value}</div>})}</td></tr>
+                        <tr><th>Released</th><td>{Released}</td></tr>
+                        <tr><th>Runtime</th><td>{Runtime}</td></tr>
+                        <tr><th>Writer</th><td>{Writer}</td></tr>
+                        <tr><th>Year</th><td>{Year}</td></tr>
+                        <tr><th>Website</th><td><a href={Website}>{Website}</a></td></tr>
+                        <tr><th>imdbRating</th><td>{imdbRating}</td></tr>
+                    </tbody>
+                </table>
+                
+            </StyledContent>
+        </StyledMovieDetailsWrapper>
+    )
 }
 
 const StyledMovieDetailsWrapper = styled.div`

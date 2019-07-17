@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieDetail Page tests should call MovieDetail snapshot correctly 1`] = `
+exports[`MovieDetails Page tests should call MovieDetails snapshot correctly 1`] = `
 <div
   className="loading-spinner sc-htoDjs dkuhNH"
 >

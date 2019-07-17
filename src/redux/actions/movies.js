@@ -28,7 +28,7 @@ export function searchMovieError(error) {
 export const searchMovie = (query) => (dispatch) => {
     dispatch(searchMoviePending());
     
-    api.movie
+    return api.movie
         .search(query)
         .then((res) => {
             dispatch(searchMovieSuccess(res))

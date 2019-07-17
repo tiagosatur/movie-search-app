@@ -28,7 +28,7 @@ export function movieDetailsError(error) {
 export const movieDetails = (id) => (dispatch) => {
     dispatch(movieDetailsPending());
 
-    api.movie
+    return api.movie
         .details(id)
         .then((res) => {
             dispatch(movieDetailsSuccess(res))
